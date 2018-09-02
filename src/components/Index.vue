@@ -253,7 +253,7 @@ export default {
 }
 .side-enter-active{
     will-change : transform;
-    transition : all 0.3s;
+    transition : all 0.5s;
 }
 /*移出*/
 .side-leave{
@@ -264,7 +264,7 @@ export default {
 }
 .side-leave-active{
     will-change : transform;
-    transition : all 0.3s;
+    transition : all 0.5s;
 }
 /*反向*/
 /*移入*/
@@ -276,7 +276,7 @@ export default {
 }
 .hide-enter-active{
     will-change : transform;
-    transition : all 0.3s;
+    transition : all 0.5s;
 }
 /*移出*/
 .hide-leave{
@@ -287,7 +287,7 @@ export default {
 }
 .hide-leave-active{
     will-change : transform;
-    transition : all 0.3s;
+    transition : all 0.5s;
 }
 </style>
 
