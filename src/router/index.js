@@ -10,7 +10,17 @@ export default new Router({
     {
       path: '/',
       name: 'Index',
-      component: Index
+      component: HelloWorld
+    },
+    {
+      path : '/swipper',
+      name : 'Swipper',
+      component : Index
+    },
+    {
+      path : '/btn',
+      name : 'Btn',
+      component : Index
     }
   ]
 })
