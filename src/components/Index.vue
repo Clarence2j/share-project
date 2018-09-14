@@ -1,17 +1,7 @@
 <template>
     <div class="index">
-        我是首页
-        <ul class="title-group clearfix">
-            <li
-                class="title-btn fl"
-                v-for="(item , index) in titleArr"
-                :key="index"
-                :class="curState == index ? 'cur' : ''"
-                @click="chooseFn(index)"
-            >
-                {{item.name}}
-            </li>
-        </ul>
+        我是伪swipper
+        
         <div 
             class="view-group"
             id="viewGroup"
@@ -19,6 +9,15 @@
             @touchmove="moveFn"
             @touchend="endFn"
         >
+            <ul class="title-group clearfix">
+                <li
+                    class="title-btn fl"
+                    v-for="(item , index) in titleArr"
+                    :key="index"
+                    :class="curState == index ? 'cur' : ''"
+                    @click="chooseFn(index)"
+                ></li>
+            </ul>
             <transition 
                 :name="!contrary ? 'side' : 'hide'"
                 @enter="enterFn"
@@ -216,17 +215,22 @@ export default {
 .title-group{
     width : 100%;
     height : 40px;
-    border-bottom : 1px solid #ccc;
+    display : flex;
+    justify-content: center;
+    position : absolute;
+    bottom : 10px;
+    left : 0;
+    z-index : 2;
 }
 .title-btn{
-    width : 25%;
-    height : 40px;
-    line-height : 40px;
-    font-size : 14px;
-    text-align : center;
+    width : 20px;
+    height : 20px;
+    background: #ccc;
+    margin-right : 10px;
+    border-radius : 50%;
 }
 .cur{
-    color : aqua;
+    background : aqua;
 }
 
 .view-group{
@@ -234,6 +238,7 @@ export default {
     height : 60%;
     overflow : hidden;
     border-bottom : 1px solid #ccc;
+    border-top : 1px solid #ccc;
     position : relative;
 }
 .view-box{

@@ -1,12 +1,6 @@
 <template>
     <div class="ccc">
-        <h2>{{item.author_name}}:</h2>
-        <h1>{{item.title}}</h1>
-        <p>---{{item.date}}</p>
         <img :src="item.thumbnail_pic_s" alt="">
-        <div class="move">
-            <div class="box" :class="isMove ? 'move-animation' : ''">{{isMove}}</div>
-        </div>
     </div>
 </template>
 <script>
