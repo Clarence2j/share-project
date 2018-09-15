@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Index from '@/components/Index'
+import { resolve } from 'uri-js';
 
 Vue.use(Router)
 
@@ -13,9 +14,24 @@ export default new Router({
       component: HelloWorld
     },
     {
-      path : '/swipper',
-      name : 'Swipper',
+      path : '/swipper1',
+      name : 'Swipper1',
       component : Index
+    },
+    {
+      path : '/swipper2',
+      name : 'Swipper2',
+      component : resolve => require(['@/components/swipper2'] , resolve)
+    },
+    {
+      path : '/swipper3',
+      name : 'Swipper3',
+      component : resolve => require(['@/components/swipper3'] , resolve)
+    },
+    {
+      path : '/swipper4',
+      name : 'Swipper4',
+      component : resolve => require(['@/components/swipper4'] , resolve)
     },
     {
       path : '/btn',

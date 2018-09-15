@@ -18,66 +18,11 @@
                     @click="chooseFn(index)"
                 ></li>
             </ul>
-            <transition 
-                :name="!contrary ? 'side' : 'hide'"
-                @enter="enterFn"
-                @after-leave="afterLeaveFn"
-            >
-                <div 
-                    class="view-box"
-                    v-show="curState == 0"
-                >
-                    <aaa
-                        :item="articles[0]"
-                        :isMove="curState == 0 && !banClick ? true : false"
-                    ></aaa>
-                </div>
-            </transition>
-            <transition 
-                :name="!contrary ? 'side' : 'hide'"
-                @enter="enterFn"
-                @after-leave="afterLeaveFn"
-            >
-                <div 
-                    class="view-box"
-                    v-show="curState == 1"
-                >
-                    <bbb
-                        :item="articles[1]"
-                        :isMove="curState == 1 && !banClick ? true : false"
-                    ></bbb>
-                </div>
-            </transition>
-            <transition 
-                :name="!contrary ? 'side' : 'hide'"
-                @enter="enterFn"
-                @after-leave="afterLeaveFn"
-            >
-                <div 
-                    class="view-box"
-                    v-show="curState == 2"
-                >
-                    <ccc
-                        :item="articles[2]"
-                        :isMove="curState == 2 && !banClick ? true : false"
-                    ></ccc>
-                </div>
-            </transition>
-            <transition 
-                :name="!contrary ? 'side' : 'hide'"
-                @enter="enterFn"
-                @after-leave="afterLeaveFn"
-            >
-                <div 
-                    class="view-box"
-                    v-show="curState == 3"
-                >
-                    <ddd
-                        :item="articles[3]"
-                        :isMove="curState == 3 && !banClick ? true : false"
-                    ></ddd>
-                </div>
-            </transition>
+            <transition-group tag="ul" :name="!contrary ? 'side' : 'hide'">
+                <li v-for="(v , k) in titleArr" :key="k" class="view-box" v-show="curState == k">
+                    {{ v.name }}
+                </li>
+            </transition-group>
         </div>
     </div>
 </template>
@@ -107,16 +52,20 @@ export default {
             // startY : 0,
             titleArr : [
                 {
-                    name : '我是Aaa'
+                    name : '我是Aaa',
+                    id : 1
                 },
                 {
-                    name : '我是Bbb'
+                    name : '我是Bbb',
+                    id : 2
                 },
                 {
-                    name : '我是Ccc'
+                    name : '我是Ccc',
+                    id : 3
                 },
                 {
-                    name : '我是Ddd'
+                    name : '我是Ddd',
+                    id : 4
                 }
             ]
         }
@@ -251,138 +200,48 @@ export default {
 /*view的过渡*/
 /*移入*/
 .side-enter{
-    opacity : 0;
-    transform : rotateY(180deg);
-    transform-style: preserve-3d;
+    left : 100%;
 }
 .side-enter-to{
-    opacity : 1;
-    transform : rotateY(0deg);
-    transform-style: preserve-3d;
+    left : 0
 }
 .side-enter-active{
-    animation: bigTr1Enter 0.45s;
-}
- @keyframes bigTr1Enter {
-    0%{
-        opacity : 0;
-        transform : rotateY(180deg);
-    }
-    49%{
-        opacity : 0;
-        transform : rotateY(90deg);
-    }
-    50%{
-        opacity : 1;
-        transform : rotateY(90deg);
-    }
-    51%{
-        opacity : 1;
-        transform : rotateY(90deg);
-    }
-    100%{
-        opacity : 1;
-        transform : rotateY(0deg);
-    }
+    will-change : transform;
+    transition : all 0.5s;
 }
 /*移出*/
 .side-leave{
-    transform : rotateY(0deg);
-    transform-style: preserve-3d;
+    left : 0;
 }
 .side-leave-to{
-    transform : rotateY(180deg);
-    transform-style: preserve-3d;
+    left : -100%;
 }
 .side-leave-active{
-    animation : bigTr1Leave 0.45s;
-}
-@keyframes bigTr1Leave {
-    0%{
-        opacity : 1;
-        transform : rotateY(0deg);
-    }
-    49%{
-        opacity : 1;
-        transform : rotateY(90deg);
-    }
-    50%{
-        opacity : 0;
-        transform : rotateY(90deg);
-    }
-    51%{
-        opacity : 0;
-        transform : rotateY(90deg);
-    }
-    100%{
-        opacity : 0;
-        transform : rotateY(180deg);
-    }
+    will-change : transform;
+    transition : all 0.5s;
 }
 /*反向*/
 /*移入*/
 .hide-enter{
-    transform : rotateY(180deg);
+    left : -100%;
 }
 .hide-enter-to{
-    transform : rotateY(0deg);
+    left : 0;
 }
 .hide-enter-active{
-    animation : bigTr2Enter 0.45s;
-}
-@keyframes bigTr2Enter {
-    0%{
-        opacity : 0;
-        transform : rotateY(180deg);
-    }
-    49%{
-        opacity : 0;
-        transform : rotateY(90deg);
-    }
-    50%{
-        opacity : 1;
-        transform : rotateY(90deg);
-    }
-    51%{
-        opacity : 1;
-        transform : rotateY(90deg);
-    }
-    100%{
-        opacity : 1;
-        transform : rotateY(0deg);
-    }
+    will-change : transform;
+    transition : all 0.5s;
 }
 /*移出*/
 .hide-leave{
-    transform : rotateY(0deg);
+    left : 0;
 }
 .hide-leave-to{
-    transform : rotateY(180deg);
+    left : 100%;
 }
 .hide-leave-active{
-    animation : bigTr2Leave 0.45s;
-}
-@keyframes bigTr2Leave {
-    0%{
-        opacity : 1;
-        transform : rotateY(0deg);
-    }
-    49%{
-        opacity : 1;
-        transform : rotateY(90deg);
-    }
-    50%{
-        opacity : 0;
-        transform : rotateY(90deg);
-    }
-    51%{
-        opacity : 0;
-        transform : rotateY(90deg);
-    }
-    100%{
-        opacity : 0;
-        transform : rotateY(180deg);
-    }
+    will-change : transform;
+    transition : all 0.5s;
 }
 </style>
 
