@@ -4,7 +4,8 @@ let baseImgPath;
 
 if(process.env.NODE_ENV == 'development'){
     
-    baseUrl = 'linTest';
+    // baseUrl = 'linTest';
+    baseUrl = '';
     baseImgPath = 'linTest/img';
 }
 

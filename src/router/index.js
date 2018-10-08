@@ -34,6 +34,16 @@ export default new Router({
       component : resolve => require(['@/components/swipper4'] , resolve)
     },
     {
+      path : '/mockIndex',
+      name : 'mockIndex',
+      component : resolve => require(['@/components/mock-index'] , resolve)
+    },
+    {
+      path : '/mock',
+      name : 'mock',
+      component : resolve => require(['@/components/mock-test'] , resolve)
+    },
+    {
       path : '/btn',
       name : 'Btn',
       component : Index

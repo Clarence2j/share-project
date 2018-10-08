@@ -3,7 +3,7 @@ import vue from 'vue'
 import { baseUrl } from '@/config/env'
 
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-// axios.defaults.baseURL = baseUrl;
+axios.defaults.baseURL = baseUrl;
 
 //请求拦截器
 axios.interceptors.request.use(

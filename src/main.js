@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import { post } from './fetch/api'
+import './config/rem'
 
 Vue.config.productionTip = false
 Vue.prototype.$post = post;
@@ -18,4 +19,9 @@ new Vue({
   router,
   components: { App },
   template: '<App/>'
+})
+
+//过滤器
+Vue.filter('getYMD' , function(input){
+  return input.split(' ')[0];
 })
